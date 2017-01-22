@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
     <meta charset='utf-8'/>
     <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
@@ -10,11 +10,9 @@
       <data:blog.pageTitle/>
     </title>
     &lt;style&gt;&lt;!--/*
-    <b:skin>
-      <![CDATA[
+    <b:skin><![CDATA[
 */
-]]>
-    </b:skin>
+]]></b:skin>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'/>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'/>
     <script type='application/ld+json'>
@@ -575,6 +573,41 @@
   </head>
   --&gt; &lt;/head&gt;
   <body>
+    <header class='site-header'>
+      <a class='logo' expr:href='data:blog.homepageUrl'><span class='logo'><data:blog.title/></span></a>
+      <b:section class='page-links' id='pages' maxwidgets='1' showaddelement='yes'>
+        <b:widget id='PageList1' locked='false' title='Pages' type='PageList' visible='true'>
+          <b:includable id='main'>
+            <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
+            <div class='widget-content'>
+              <b:if cond='data:mobile'>
+                <select expr:id='data:widget.instanceId + &quot;_select&quot;'>
+                  <b:loop values='data:links' var='link'>
+                    <b:if cond='data:link.isCurrentPage'>
+                      <option expr:value='data:link.href' selected='selected'><data:link.title/></option>
+                      <b:else/>
+                      <option expr:value='data:link.href'><data:link.title/></option>
+                    </b:if>
+                  </b:loop>
+                </select>
+                <span class='pagelist-arrow'>&amp;#9660;</span>
+                <b:else/>
+                <ul>
+                  <b:loop values='data:links' var='link'>
+                    <b:if cond='data:link.isCurrentPage'>
+                      <li class='selected'><a expr:href='data:link.href'><data:link.title/></a></li>
+                      <b:else/>
+                      <li><a expr:href='data:link.href'><data:link.title/></a></li>
+                    </b:if>
+                  </b:loop>
+                </ul>
+              </b:if>
+              <b:include name='quickedit'/>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </header>
     <b:section class='header' id='header' maxwidgets='1' name='Header' showaddelement='no'>
       <b:widget id='Header1' locked='true' title='Amplify Blogger (Header)' type='Header' version='1' visible='true'>
         <b:includable id='main'>
