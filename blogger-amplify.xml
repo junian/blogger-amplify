@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html amp='amp' expr:dir='data:blog.languageDirection' lang='en'>
   <head>
     <meta charset='utf-8'/>
     <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
@@ -9,16 +9,19 @@
     <title>
       <data:blog.pageTitle/>
     </title>
-    &lt;style&gt;&lt;!--/*
-    <b:skin>
-      <![CDATA[
-*/
+    <b:if cond='1==0'>
+      <b:skin>
+        <![CDATA[
 ]]>
-    </b:skin>
+      </b:skin>
+    </b:if>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'/>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'/>
     <script type='application/ld+json'>
     </script>
+    &lt;!--
+    <style/>
+    --&gt;
     <style amp-custom='amp-custom'>
       /*<![CDATA[*/
       /**
@@ -168,7 +171,7 @@
         vertical-align: middle; }
       .icon > svg path {
         fill: #828282; }
-      img, amp-img {
+      amp-img {
         background-color: grey; }
       .cf:after {
         content: "";
@@ -327,6 +330,7 @@
         color: #333332;
         margin-bottom: 50px; }
       .post .author-image {
+        background: url('//lh5.googleusercontent.com/-lqHOkloxmRE/AAAAAAAAAAI/AAAAAAAABhQ/2-DdONzSkBM/s512-c/photo.jpg');
         display: inline-block;
         width: 30px;
         height: 30px;
@@ -394,7 +398,7 @@
       .post .post-content a {
         color: #333333;
         text-decoration: underline; }
-      .post .post-content img, .post .post-content amp-img, .post .post-content amp-youtube {
+      .post .post-content amp-img, .post .post-content amp-youtube {
         margin-top: 30px; }
       .post .post-content figure {
         margin: 0;
@@ -561,6 +565,7 @@
         padding-left: 0; }
       .pagination .disabled {
         opacity: 0; }
+      .post-body img,
       .img-responsive,
       .thumbnail > img,
       .thumbnail a > img,
@@ -605,7 +610,7 @@
     </header>
     <main class='content' role='main'>
       <b:if cond='data:blog.pageType not in {&quot;static_page&quot;, &quot;item&quot;}'>
-        <b:section class='header' id='header' maxwidgets='1' name='Header' showaddelement='no'>
+        <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
           <b:widget id='Header1' locked='true' title='Amplify Blogger (Header)' type='Header' version='1' visible='true'>
             <b:includable id='main'>
               <!--No header image -->
@@ -639,7 +644,7 @@
           </b:widget>
         </b:section>
       </b:if>
-      <b:section class='main' id='main' name='Main' showaddelement='yes'>
+      <b:section class='main' id='main' showaddelement='yes'>
         <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
           <b:includable id='main' var='top'>
             <!-- posts -->
@@ -648,7 +653,7 @@
               <b:loop values='data:posts' var='post'>
                 <div class='post-outer'>
                   <b:include data='post' name='post'/>
-                  <b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>
+                  <!--<b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>-->
                 </div>
                 <!-- Ad -->
                 <b:if cond='data:post.includeAd'>
@@ -1289,7 +1294,7 @@
                       </h5>
                       <section class='author' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
                         <b:if cond='data:post.authorPhoto.url'>
-                          <div class='author-image' expr:style='&quot;background-image: url(&apos;&quot; + data:post.authorPhoto.url + &quot;&apos;)&quot;' itemprop='image'>
+                          <div class='author-image' itemprop='image'>
                           </div>
                         </b:if>
                         <h4 itemprop='name'>
@@ -1701,19 +1706,6 @@
         </div>
       </footer>
     </b:if>
-    <script type='text/javascript'>
-      //<![CDATA[
-      var postBody = document.getElementsByClassName('post-body')[0];
-      var x = postBody.getElementsByTagName('img');
-      var i;
-      for (i = 0; i < x.length; i++) {
-        if (!x[i].classList.contains('img-responsive')) 
-        {
-          x[i].classList.add('img-responsive');
-        }
-      }
-      //]]>
-    </script>
     &lt;!--
   </body>
   --&gt; &lt;/body&gt;
